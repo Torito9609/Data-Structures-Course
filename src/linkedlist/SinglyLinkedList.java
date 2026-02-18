@@ -90,7 +90,7 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
             return;
         }
 
-        Node<T> newNode = new Node<>(value);
+        Node<T> newNode = new Node<T>(value);
         Node<T> aux = head;
 
         for(int i = 0; i < index - 1; i++){
@@ -134,7 +134,21 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
 
     @Override
     public T remove(int index) {
-        return null;
+        if(index < 0 || index >= size) throw new RuntimeException("Indice invalido.");
+        if(index == 0){
+            return removeFirst();
+        }
+        if(index == size - 1){
+            return removeLast();
+        }
+        Node<T> aux = head;
+        for(int i = 0; i < index; i++){
+            aux = aux.next;
+        }
+        Node<T> deleted = aux.next;
+        aux.next = deleted.next;
+        size--;
+        return deleted.value;
     }
 
     @Override
@@ -144,11 +158,11 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
 
     @Override
     public T first() {
-        return null;
+        return head.value;
     }
 
     @Override
     public T last() {
-        return null;
+        return tail.value;
     }
 }
