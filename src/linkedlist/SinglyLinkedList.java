@@ -58,7 +58,16 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
 
     @Override
     public int indexOf(T value) {
-        return 0;
+
+        Node<T> aux = head;
+        int index = 0;
+
+        while(aux != null){
+            if(Objects.equals(aux.value, value)) return index;
+            aux = aux.next;
+            index++;
+        }
+        return -1;
     }
 
     @Override
