@@ -80,7 +80,25 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
 
     @Override
     public void add(int index, T value) {
+        if(index < 0 || index > size) throw  new RuntimeException("Indice invalido.");
+        if(index == 0){
+            addFirst(value);
+            return;
+        }
+        else if(index == size) {
+            addLast(value);
+            return;
+        }
 
+        Node<T> newNode = new Node<>(value);
+        Node<T> aux = head;
+
+        for(int i = 0; i < index - 1; i++){
+            aux = aux.next;
+        }
+        newNode.next = aux.next;
+        aux.next = newNode;
+        size++;
     }
 
     @Override
@@ -88,7 +106,7 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
         if(isEmpty()) throw  new NoSuchElementException("La lista esta vacía.");
         T removed = head.value;
         if(size == 1){
-            clear();gi
+            clear();
             return  removed;
         }
         head = head.next;
@@ -98,7 +116,20 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
 
     @Override
     public T removeLast() {
-        return null;
+        if(isEmpty()) throw new NoSuchElementException("La lista está vacía.");
+        T removed = tail.value;
+        if(size == 1){
+            clear();
+            return removed;
+        }
+        Node<T> aux = head;
+        while(aux.next != tail){
+            aux = aux.next;
+        }
+        tail = aux;
+        tail.next = null;
+        size--;
+        return removed;
     }
 
     @Override
