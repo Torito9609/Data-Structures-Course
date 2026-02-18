@@ -1,6 +1,7 @@
 package linkedlist;
 
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class SinglyLinkedList<T> implements LinkedList<T>{
     private Node<T> head;
@@ -153,7 +154,24 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
 
     @Override
     public boolean remove(T value) {
-        return false;
+        if(head == null) return false;
+
+        if(Objects.equals(head.value, value)){
+            head = head.next;
+            size--;
+            return true;
+        }
+
+        Node<T> aux = head;
+
+        while(aux.next != null && !Objects.equals(aux.next.value, value)){
+            aux = aux.next;
+        }
+        if(aux.next == null) return false;
+
+        aux.next = aux.next.next;
+        size--;
+        return true;
     }
 
     @Override
