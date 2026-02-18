@@ -31,12 +31,12 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
     }
 
     @Override
-    public T get(int index) {
+    public T getAt(int index) {
         return null;
     }
 
     @Override
-    public T set(int index, T value) {
+    public T setAt(int index, T value) {
         return null;
     }
 
@@ -79,7 +79,7 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
     }
 
     @Override
-    public void add(int index, T value) {
+    public void addAt(int index, T value) {
         if(index < 0 || index > size) throw  new RuntimeException("Indice invalido.");
         if(index == 0){
             addFirst(value);
@@ -133,7 +133,7 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
     }
 
     @Override
-    public T remove(int index) {
+    public T removeAt(int index) {
         if(index < 0 || index >= size) throw new RuntimeException("Indice invalido.");
         if(index == 0){
             return removeFirst();

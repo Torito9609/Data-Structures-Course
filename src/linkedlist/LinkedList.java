@@ -7,20 +7,20 @@ public interface LinkedList<T> {
     void clear();
 
     //access
-    T get(int index);
-    T set(int index, T value);
+    T getAt(int index);
+    T setAt(int index, T value);
     int indexOf(T value);
     boolean contains(T value);
 
     //insert
     void addFirst(T value);
     void addLast(T value);
-    void add(int index, T value);
+    void addAt(int index, T value);
 
     //delete
     T removeFirst();
     T removeLast();
-    T remove(int index);
+    T removeAt(int index);
     boolean remove(T value);
 
     T first();
