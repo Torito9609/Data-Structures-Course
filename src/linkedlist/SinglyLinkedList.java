@@ -33,12 +33,27 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
 
     @Override
     public T getAt(int index) {
-        return null;
+        if(index < 0 || index >= size) throw new RuntimeException("Indice invalido.");
+        if(isEmpty()) throw new NoSuchElementException("La lista esta vacía.");
+
+        Node<T> aux = head;
+        for(int i = 0; i < index; i++){
+            aux = aux.next;
+        }
+        return aux.value;
     }
 
     @Override
     public T setAt(int index, T value) {
-        return null;
+        if(index < 0 || index >= size) throw new RuntimeException("Indice invalido.");
+
+        Node<T> aux = head;
+        for(int i = 0; i < index; i++){
+            aux = aux.next;
+        }
+        T old = aux.value;
+        aux.value = value;
+        return old;
     }
 
     @Override
