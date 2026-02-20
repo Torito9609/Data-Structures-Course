@@ -39,6 +39,10 @@ class SinglyLinkedListTest {
         assertTrue(list.contains(10));
         assertEquals(0, list.indexOf(10));
         assertFalse(list.contains(99));
+        int x = list.removeLast();
+        assertEquals(10, x);
+        assertEquals(0, list.size());
+        assertTrue(list.isEmpty());
     }
 
     @Test
@@ -52,6 +56,10 @@ class SinglyLinkedListTest {
         assertTrue(list.contains(10));
         assertEquals(0, list.indexOf(10));
         assertFalse(list.contains(99));
+        int x = list.removeFirst();
+        assertEquals(10, x);
+        assertEquals(0, list.size());
+        assertTrue(list.isEmpty());
     }
-
+    
 }
