@@ -14,7 +14,7 @@ class SinglyLinkedListTest {
     }
 
     @Test
-    void newList_isEmptyAndZero(){
+    void newListIsEmptyAndZeroTest(){
         assertEquals(0,list.size());
         assertTrue(list.isEmpty());
         assertFalse(list.contains(0));
@@ -29,7 +29,7 @@ class SinglyLinkedListTest {
     }
 
     @Test
-    void addFirstElementEmptyList(){
+    void addFirstElementEmptyListTest(){
         list.addFirst(10);
         assertEquals(1, list.size());
         assertFalse(list.isEmpty());
@@ -46,7 +46,7 @@ class SinglyLinkedListTest {
     }
 
     @Test
-    void addLastElementEmptyList(){
+    void addLastElementEmptyListTest(){
         list.addLast(10);
         assertEquals(1, list.size());
         assertFalse(list.isEmpty());
@@ -60,6 +60,30 @@ class SinglyLinkedListTest {
         assertEquals(10, x);
         assertEquals(0, list.size());
         assertTrue(list.isEmpty());
+    }
+
+    @Test
+    void addAtTest(){
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(5);
+        list.addLast(6);
+
+        list.addAt(3, 4);
+
+        assertEquals(6, list.size());
+        assertEquals(1, list.getAt(0));
+        assertEquals(2, list.getAt(1));
+        assertEquals(3, list.getAt(2));
+        assertEquals(4, list.getAt(3));
+        assertEquals(5, list.getAt(4));
+        assertEquals(6, list.getAt(5));
+
+        assertEquals(1, list.first());
+        assertEquals(6, list.last());
+        assertEquals(3, list.indexOf(4));
+        assertTrue(list.contains(4));
     }
     
 }
