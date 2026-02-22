@@ -25,4 +25,21 @@ public class Stack<T> {
     public T peek(){
         return list.first();
     }
+
+    public int size(){
+        return list.size();
+    }
+
+    public boolean isEmpty(){
+        return list.isEmpty();
+    }
+
+    public void clear(){
+        list.clear();
+    }
+
+    @Override
+    public String toString(){
+        return list.toString();
+    }
 }

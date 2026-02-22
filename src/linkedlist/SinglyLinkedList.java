@@ -212,4 +212,9 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
     public T last() {
         return tail.value;
     }
+
+    @Override
+    public String toString(){
+
+    }
 }
