@@ -215,6 +215,16 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
 
     @Override
     public String toString(){
-
+        StringBuilder sb = new StringBuilder();
+        if(isEmpty()) return "[]";
+        sb.append("[");
+        Node<T> current = head;
+        while(current != null){
+            sb.append(current.value);
+            if(current.next != null) sb.append(", ");
+            current = current.next;
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }
