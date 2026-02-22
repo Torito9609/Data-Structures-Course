@@ -205,11 +205,13 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
 
     @Override
     public T first() {
+        if(isEmpty()) throw new NoSuchElementException("La lista está vacía.");
         return head.value;
     }
 
     @Override
     public T last() {
+        if(isEmpty()) throw new NoSuchElementException("La lista está vacía.");
         return tail.value;
     }
 
