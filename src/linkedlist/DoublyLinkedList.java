@@ -44,6 +44,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         if(index == size-1) return tail.value;
 
         Node<T> aux;
+
         if(index < size/2) {
             aux = head;
             for (int i = 0; i < index; i++) {
@@ -195,5 +196,28 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     public T last() {
         if(isEmpty()) throw new NoSuchElementException("La lista está vacía.");
         return tail.value;
+    }
+
+    private Node<T> getNodeAt(int index){
+        if(index <0 || index >= size) throw new RuntimeException("El índice es inválido.");
+        if(isEmpty()) throw new NoSuchElementException("La lista está vacía.");
+        if(index == 0) return head;
+        if(index == size -1) return tail;
+
+        Node<T> aux;
+
+        if(index < size/2) {
+            aux = head;
+            for (int i = 0; i < index; i++) {
+                aux = aux.next;
+            }
+        }
+        else {
+            aux = tail;
+            for(int i = size-1; i > index; i--){
+                aux = aux.prev;
+            }
+        }
+        return aux;
     }
 }
