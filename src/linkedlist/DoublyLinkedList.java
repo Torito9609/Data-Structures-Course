@@ -39,57 +39,14 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public T getAt(int index) {
-        if(index < 0 || index >= size) throw new RuntimeException("Indice inválido");
-        if(index == 0) return head.value;
-        if(index == size-1) return tail.value;
-
-        Node<T> aux;
-
-        if(index < size/2) {
-            aux = head;
-            for (int i = 0; i < index; i++) {
-                aux = aux.next;
-            }
-        }
-        else {
-            aux = tail;
-            for(int i = size-1; i > index; i--){
-                aux = aux.prev;
-            }
-        }
-        return aux.value;
+        return getNodeAt(index).value;
     }
 
     @Override
     public T setAt(int index, T value) {
-        if(index < 0 || index >= size) throw new RuntimeException("Indice inválido");
-        if(index == 0){
-            T oldValue = head.value;
-            head.value = value;
-            return oldValue;
-        }
-        if(index == size-1){
-            T oldValue = tail.value;
-            tail.value = value;
-            return oldValue;
-        }
-
-        Node<T> aux;
-
-        if(index < size/2) {
-            aux = head;
-            for (int i = 0; i < index; i++) {
-                aux = aux.next;
-            }
-        }
-        else {
-            aux = tail;
-            for(int i = size-1; i > index; i--){
-                aux = aux.prev;
-            }
-        }
-        T oldValue = aux.value;
-        aux.value = value;
+        Node<T> node = getNodeAt(index);
+        T oldValue = node.value;
+        node.value = value;
         return oldValue;
     }
 
