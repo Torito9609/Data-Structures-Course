@@ -10,6 +10,7 @@ public class Queue<T> {
         this.list = new SinglyLinkedList<>();
     }
     public Queue(LinkedList<T> list) {
+        if(list == null) throw new IllegalArgumentException("list no puede ser nulo.");
         this.list = list;
     }
 

@@ -4,6 +4,14 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class SinglyLinkedList<T> implements LinkedList<T>{
+    private static class Node<T>{
+        T value;
+        Node<T> next;
+        public Node (T value){
+            this.value = value;
+        }
+    }
+
     private Node<T> head;
     private Node<T> tail;
     private int size;
@@ -172,7 +180,7 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
             return removeLast();
         }
         Node<T> aux = head;
-        for(int i = 0; i < index; i++){
+        for(int i = 0; i < index - 1; i++){
             aux = aux.next;
         }
         Node<T> deleted = aux.next;
@@ -188,6 +196,7 @@ public class SinglyLinkedList<T> implements LinkedList<T>{
         if(Objects.equals(head.value, value)){
             head = head.next;
             size--;
+            tail = null;
             return true;
         }
 

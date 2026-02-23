@@ -11,6 +11,7 @@ public class Stack<T> {
     }
 
     public Stack(LinkedList<T> list) {
+        if(list == null) throw new IllegalArgumentException("list no puede ser nulo.");
         this.list = list;
     }
 
