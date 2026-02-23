@@ -100,7 +100,26 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public void addAt(int index, T value) {
+        if(index < 0 || index > size) throw new RuntimeException("Indice inválido.");
+        Node<T> newNode = new Node<>(value);
+        if(index == 0){
+            addFirst(value);
+            return;
+        }
+        if(index == size){
+            addLast(value);
+            return;
+        }
 
+        Node<T> nodeAtIndex = getNodeAt(index);
+        Node<T> prev = nodeAtIndex.prev;
+
+        nodeAtIndex.prev = newNode;
+        prev.next = newNode;
+        newNode.prev = prev;
+        newNode.next = nodeAtIndex;
+
+        size++;
     }
 
     @Override
@@ -147,7 +166,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         size--;
         removedNode.next = null;
         removedNode.prev = null;
-        
+
         return removedNode.value;
     }
 
