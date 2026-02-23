@@ -1,5 +1,7 @@
 package linkedlist;
 
+import java.util.NoSuchElementException;
+
 public class DoublyLinkedList<T> implements LinkedList<T> {
     private static class Node<T>{
         T value;
@@ -37,7 +39,23 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public T getAt(int index) {
-        return null;
+        if(index < 0 || index >= size) throw new RuntimeException("Indice inválido");
+        if(index == 0) return head.value;
+        if(index == size-1) return tail.value;
+        Node<T> aux;
+        if(index < size/2) {
+            aux = head;
+            for (int i = 0; i < index; i++) {
+                aux = aux.next;
+            }
+        }
+        else {
+            aux = tail;
+            for(int i = size-1; i > index; i--){
+                aux = aux.prev;
+            }
+        }
+        return aux.value;
     }
 
     @Override
@@ -100,12 +118,32 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public T removeFirst() {
-        return null;
+        if(isEmpty()) throw new NoSuchElementException("La lista esta vacía.");
+        Node<T> deleted = head;
+        if(size == 1){
+            clear();
+            return deleted.value;
+        }
+        head = head.next;
+        head.prev = null;
+        size--;
+        deleted.next = null;
+        return deleted.value;
     }
 
     @Override
     public T removeLast() {
-        return null;
+        if(isEmpty()) throw new NoSuchElementException("La lista esta vacía.");
+        Node<T> deleted = tail;
+        if(size == 1){
+            clear();
+            return deleted.value;
+        }
+        tail = tail.prev;
+        tail.next = null;
+        size--;
+        deleted.prev = null;
+        return deleted.value;
     }
 
     @Override
@@ -120,11 +158,13 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public T first() {
-        return null;
+        if(isEmpty()) throw new NoSuchElementException("La lista está vacía.");
+        return head.value;
     }
 
     @Override
     public T last() {
-        return null;
+        if(isEmpty()) throw new NoSuchElementException("La lista está vacía.");
+        return tail.value;
     }
 }
