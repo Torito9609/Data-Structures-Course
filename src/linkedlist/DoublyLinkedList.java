@@ -135,7 +135,20 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public T removeAt(int index) {
-        return null;
+        if(index < 0 || index >= size) throw new RuntimeException("Indice inválido.");
+        if(index == 0) return removeFirst();
+        if(index == size -1) return removeLast();
+
+        Node<T> removedNode = getNodeAt(index);
+        Node<T> next = removedNode.next;
+        Node<T> prev = removedNode.prev;
+        prev.next = next;
+        next.prev = prev;
+        size--;
+        removedNode.next = null;
+        removedNode.prev = null;
+        
+        return removedNode.value;
     }
 
     @Override
